@@ -39,7 +39,7 @@ public class WeaponController : MonoBehaviour {
         if (Input.GetMouseButtonDown(0)) {
            if(lastTimeShoot + fireRate < Time.time) {
                 Instantiate(flashEffect, weaponMuzzle.position, Quaternion.Euler(weaponMuzzle.forward), transform);
-                AudioSource.PlayClipAtPoint(shot, this.transform.position, 1);
+                AudioSource.PlayClipAtPoint(shot, this.transform.position, 0.5f);
                 Debug.Log("Pressed primary button.");
                 //AddRecoil();
                 RaycastHit hit;

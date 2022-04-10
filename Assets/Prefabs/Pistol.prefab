@@ -105,6 +105,7 @@ MonoBehaviour:
   hitForce: 250
   fireRate: 0
   shot: {fileID: 8300000, guid: 89ef5b6af40985a479eb40cbe7e63bed, type: 3}
+  crit: {fileID: 8300000, guid: 28af80466ec5ea04ea360e4d2eb17486, type: 3}
   weaponMuzzle: {fileID: 8885885991935531667}
   flashEffect: {fileID: 3030710784846471904, guid: bb4789254487f5a4b94b6f3952d5e7f7, type: 3}
   damage: 100

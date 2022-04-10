@@ -13,6 +13,7 @@ public class WeaponController : MonoBehaviour {
     [SerializeField] float hitForce;
     [SerializeField] float fireRate = 0.6f;
     [SerializeField] AudioClip shot;
+    [SerializeField] AudioClip crit;
     [SerializeField] private Transform weaponMuzzle;
     [SerializeField] private GameObject flashEffect;
     [SerializeField] float damage;
@@ -41,8 +42,7 @@ public class WeaponController : MonoBehaviour {
         if (Input.GetMouseButtonDown(0)) {
            if(lastTimeShoot + fireRate < Time.time) {
                 Instantiate(flashEffect, weaponMuzzle.position, Quaternion.Euler(weaponMuzzle.forward), transform);
-                AudioSource.PlayClipAtPoint(shot, this.transform.position, 0.5f);
-                Debug.Log("Pressed primary button.");
+                AudioClip auxClip = shot;
                 //AddRecoil();
                 RaycastHit hit;
                 if (Physics.Raycast(cameraPlayerTransform.position, cameraPlayerTransform.forward, out hit, fireRange, hittableLayers)) {
@@ -53,12 +53,14 @@ public class WeaponController : MonoBehaviour {
                         int multiplier = 1;
                         if (Random.value < critProb) {
                             multiplier = 2;
+                            auxClip = crit;
                         }
                         hit.transform.GetComponent<EnemyHealthManager>().TakeDamage(damage * multiplier);
                         hit.rigidbody.AddForceAtPosition(hitForce * transform.forward, hit.point);
                     }
                     //Destroy(bulletHoleClone, 30f);
                 }
+                AudioSource.PlayClipAtPoint(auxClip, this.transform.position, 0.5f);
             }
             lastTimeShoot = Time.time;
         }

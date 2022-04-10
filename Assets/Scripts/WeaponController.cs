@@ -16,6 +16,7 @@ public class WeaponController : MonoBehaviour {
     [SerializeField] private Transform weaponMuzzle;
     [SerializeField] private GameObject flashEffect;
     [SerializeField] float damage;
+    [SerializeField] float critProb;
 
 
     private GameObject owner;
@@ -24,6 +25,7 @@ public class WeaponController : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
+        critProb = critProb / 100;
         cameraPlayerTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
     }
 
@@ -48,7 +50,11 @@ public class WeaponController : MonoBehaviour {
                     //hit.rigidbody.AddForce(cameraPlayerTransform.forward * recoilForce);
                     
                     if (hit.rigidbody) {
-                        hit.transform.GetComponent<EnemyHealthManager>().TakeDamage(damage);
+                        int multiplier = 1;
+                        if (Random.value < critProb) {
+                            multiplier = 2;
+                        }
+                        hit.transform.GetComponent<EnemyHealthManager>().TakeDamage(damage * multiplier);
                         hit.rigidbody.AddForceAtPosition(hitForce * transform.forward, hit.point);
                     }
                     //Destroy(bulletHoleClone, 30f);

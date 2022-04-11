@@ -11,7 +11,7 @@ public class WeaponController : MonoBehaviour {
     [SerializeField] GameManager ammoText;
 
     [Header("Shoot Parameters")]
-    [SerializeField] float fireRange = 200;
+    [SerializeField] float fireRange;
     [SerializeField] float hitForce;
     [SerializeField] float fireRate = 0.6f;
     [SerializeField] AudioClip shot;

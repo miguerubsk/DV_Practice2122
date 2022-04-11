@@ -110,6 +110,10 @@ MonoBehaviour:
   flashEffect: {fileID: 3030710784846471904, guid: bb4789254487f5a4b94b6f3952d5e7f7, type: 3}
   damage: 100
   critProb: 10
+  magazineSize: 12
+  reloadTime: 1.5
+  reloadAudio: {fileID: 8300000, guid: 0ddd2845a0da22c4994d843c588ccabd, type: 3}
+  noAmmoAudio: {fileID: 8300000, guid: 433b0c657b6cb8f4f8fd734e8eb015c1, type: 3}
 --- !u!114 &2902345898290945162
 MonoBehaviour:
   m_ObjectHideFlags: 0

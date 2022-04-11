@@ -8,7 +8,7 @@ using TMPro;
 public class GameManager : MonoBehaviour {
 
     int currentGold;
-    public Text goldText, time, lifes;
+    [SerializeField] Text goldText, time, lifes, ammo;
     [SerializeField] float goalGoldPercent;
     [SerializeField] int timeToSurvive;
     int goalGold;
@@ -77,5 +77,13 @@ public class GameManager : MonoBehaviour {
 
     public void ResetPoints() {
         points = 0;
+    }
+
+    public string GetAmmoText() {
+        return ammo.text;
+    }
+
+    public void SetAmmoText(string text) {
+        ammo.text = text;
     }
 }

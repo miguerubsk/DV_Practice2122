@@ -32,13 +32,14 @@ public class WeaponController : MonoBehaviour {
     private float lastTimeShoot = Mathf.NegativeInfinity;
     private int currentAmmo;
     private Transform cameraPlayerTransform;
+    private bool isReloading = false;
 
     // Start is called before the first frame update
     void Start() {
         ammoText = FindObjectOfType<GameManager>();
         ammoText.SetAmmoText("Ammo: " + magazineSize);
         currentAmmo = magazineSize;
-        critProb = critProb / 100;
+        critProb /= 100;
         cameraPlayerTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
     }
 
@@ -47,7 +48,7 @@ public class WeaponController : MonoBehaviour {
         if (UIController.CanDoThings()) {
             HandleShoot();
         }
-        if(Input.GetKeyDown(KeyCode.R)) {
+        if(Input.GetKeyDown(KeyCode.R) && !isReloading) {
             StartCoroutine(Reload());
         }
         //transform.localPosition = Vector3.Lerp(transform.position, new Vector3(0.64f, -0.2593f, 0.86f), Time.deltaTime * 5f);
@@ -56,7 +57,7 @@ public class WeaponController : MonoBehaviour {
     private void HandleShoot() {
         if (Input.GetMouseButtonDown(0)) {
            if(lastTimeShoot + fireRate < Time.time) {
-                if(currentAmmo-- > 0) {
+                if(currentAmmo-- > 0 && !isReloading) {
                     ammoText.SetAmmoText("Ammo: " + currentAmmo);
                     Instantiate(flashEffect, weaponMuzzle.position, Quaternion.Euler(weaponMuzzle.forward), transform);
                     AudioClip auxClip = shot;
@@ -90,11 +91,13 @@ public class WeaponController : MonoBehaviour {
     }
 
     IEnumerator Reload() {
+        isReloading = true;
         ammoText.SetAmmoText("RELOADING");
         AudioSource.PlayClipAtPoint(reloadAudio, this.transform.position, 1f);
         yield return new WaitForSeconds(reloadTime);
         currentAmmo = magazineSize;
         ammoText.SetAmmoText("Ammo: " + currentAmmo);
+        isReloading = false;
     }
     private void AddRecoil() {
         transform.Rotate(-hitForce, 0f, 0f);

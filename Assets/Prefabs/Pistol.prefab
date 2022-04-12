@@ -102,7 +102,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   bulletHolePrefab: {fileID: 4123982429080996956, guid: f762831f5030b3c409efffb7001d86bb, type: 3}
   ammoText: {fileID: 0}
-  fireRange: 10
+  fireRange: 15
   hitForce: 250
   fireRate: 0
   shot: {fileID: 8300000, guid: 89ef5b6af40985a479eb40cbe7e63bed, type: 3}

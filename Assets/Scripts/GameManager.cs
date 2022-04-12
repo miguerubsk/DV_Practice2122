@@ -25,9 +25,9 @@ public class GameManager : MonoBehaviour {
             once = true;
             if (SceneManager.GetActiveScene().name == "FPS") {
                 points = 0;
-                timeToSurvive = 30;
+                //timeToSurvive = 30;
             } else {
-                timeToSurvive = 60;
+                //timeToSurvive = 60;
                 currentGold = points;
                 goldText.text = "Points: " + currentGold;
             }

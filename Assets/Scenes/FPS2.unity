@@ -1937,7 +1937,7 @@ MonoBehaviour:
   lifes: {fileID: 0}
   ammo: {fileID: 872437520}
   goalGoldPercent: 0
-  timeToSurvive: 30
+  timeToSurvive: 120
 --- !u!4 &723115586
 Transform:
   m_ObjectHideFlags: 0
@@ -3631,6 +3631,7 @@ MonoBehaviour:
   winMusic: {fileID: 8300000, guid: 1ac2a5dc9185b294d815d778dd35a132, type: 3}
   deathMusic: {fileID: 8300000, guid: cf05b32947a00874fb58a4fd75fec973, type: 3}
   goalText: {fileID: 1787001230}
+  gameManager: {fileID: 723115585}
 --- !u!114 &1251624956
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ public class UIController : MonoBehaviour {
     [SerializeField] AudioClip winMusic;
     [SerializeField] AudioClip deathMusic;
     [SerializeField] TextMeshProUGUI goalText;
+    [SerializeField] GameManager gameManager;
  
     public static bool isDeath, isPaused, isWinner, isStarting;
     // Start is called before the first frame update
@@ -126,9 +127,9 @@ public class UIController : MonoBehaviour {
         isStarting = true;
         startPanel.SetActive(true);
         if(SceneManager.GetActiveScene().buildIndex == 0) {
-            goalText.text = "Collect " + FindObjectOfType<GameManager>().GetGoalGold() + " gold!";
+            goalText.text = "Collect " +gameManager.GetGoalGold() + " gold!";
         } else {
-            goalText.text = "Survive for " + FindObjectOfType<GameManager>().GetTimeToSurvive() + " seconds!";
+            goalText.text = "Survive for " + gameManager.GetTimeToSurvive() + " seconds!";
         }
 
         Time.timeScale = 0f;

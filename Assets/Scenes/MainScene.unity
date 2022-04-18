@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.19561633, g: 0.23706588, b: 0.31044653, a: 1}
+  m_IndirectSpecularColor: {r: 0.19561632, g: 0.23706584, b: 0.31044653, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -323,7 +323,8 @@ MonoBehaviour:
   useCustomCenter: 0
   terrain: {fileID: 15600000, guid: 3de709c409ace41448ef550dcd0f7d4d, type: 2}
   radius: 100
-  maxGold: 50
+  minGold: 50
+  maxGold: 150
 --- !u!1 &165585583
 GameObject:
   m_ObjectHideFlags: 0
@@ -5568,6 +5569,7 @@ MonoBehaviour:
   goldText: {fileID: 1427385767}
   time: {fileID: 1179753002}
   lifes: {fileID: 1129715380}
+  ammo: {fileID: 0}
   goalGoldPercent: 20
   timeToSurvive: 0
 --- !u!4 &1783748394
@@ -6012,6 +6014,7 @@ MonoBehaviour:
   winMusic: {fileID: 8300000, guid: 1ac2a5dc9185b294d815d778dd35a132, type: 3}
   deathMusic: {fileID: 8300000, guid: cf05b32947a00874fb58a4fd75fec973, type: 3}
   goalText: {fileID: 633987596}
+  gameManager: {fileID: 1783748393}
 --- !u!114 &1927751666
 MonoBehaviour:
   m_ObjectHideFlags: 0

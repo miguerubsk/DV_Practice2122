@@ -9,18 +9,24 @@ public class GoldGenerator : MonoBehaviour {
     [SerializeField] bool useCustomCenter;
     [SerializeField] TerrainData terrain;
     [SerializeField] int radius;
-    [SerializeField] int maxGold;
+    [SerializeField] int minGold, maxGold;
+    int totalGold;
     
 
-    // Start is called before the first frame update
-    void Start() {
+    void Awake() {
         if (!useCustomCenter) {
             center = this.transform.position;
         }
-        int nGold = 0;
+        int nGold = Random.Range(minGold, maxGold);
+        totalGold = nGold;
         do {
             GenerateGold();
-        } while (++nGold <= maxGold);
+        } while (--nGold > 0);
+    }
+
+    // Start is called before the first frame update
+    void Start() {
+        
     }
 
     // Update is called once per frame
@@ -41,6 +47,6 @@ public class GoldGenerator : MonoBehaviour {
         Instantiate(goldPrefab, spawnPosition, Quaternion.identity);
     }
 
-    public int GetMaxGold() => maxGold;
+    public int GetTotalGold() => totalGold;
 
 }

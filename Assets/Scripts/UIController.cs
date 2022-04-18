@@ -127,7 +127,7 @@ public class UIController : MonoBehaviour {
         isStarting = true;
         startPanel.SetActive(true);
         if(SceneManager.GetActiveScene().buildIndex == 0) {
-            goalText.text = "Collect " +gameManager.GetGoalGold() + " gold!";
+            goalText.text = "Collect " + gameManager.GetGoalGold() + " gold!";
         } else {
             goalText.text = "Survive for " + gameManager.GetTimeToSurvive() + " seconds!";
         }

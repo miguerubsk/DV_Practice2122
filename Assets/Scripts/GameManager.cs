@@ -15,12 +15,12 @@ public class GameManager : MonoBehaviour {
     bool once;
     private static int points;
 
-    // Start is called before the first frame update
-    void Start() {
-        if(SceneManager.GetActiveScene().buildIndex == 0) {
+    void Awake() {
+        if (SceneManager.GetActiveScene().buildIndex == 0) {
             currentGold = 0;
             goalGoldPercent /= 100;
-            goalGold = (int)(FindObjectOfType<GoldGenerator>().GetMaxGold() * goalGoldPercent);
+            goalGold = (int)(FindObjectOfType<GoldGenerator>().GetTotalGold() * goalGoldPercent);
+            goldText.text = "Gold: " + currentGold + "/" + goalGold;
         } else {
             once = true;
             if (SceneManager.GetActiveScene().name == "FPS") {
@@ -32,6 +32,11 @@ public class GameManager : MonoBehaviour {
                 goldText.text = "Points: " + currentGold;
             }
         }
+    }
+
+    // Start is called before the first frame update
+    void Start() {
+        
     }
 
     // Update is called once per frame
@@ -53,7 +58,7 @@ public class GameManager : MonoBehaviour {
 
     public void AddGold(int goldToAdd) {
         this.currentGold += goldToAdd;
-        goldText.text = "Gold: " + currentGold;
+        goldText.text = "Gold: " + currentGold + "/" + goalGold;
         if(goalGold == currentGold) {
             FindObjectOfType<UIController>().Win();
         }

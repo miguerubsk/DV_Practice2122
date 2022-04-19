@@ -48,6 +48,7 @@ public class UIController : MonoBehaviour {
         startPanel.SetActive(false);
         Time.timeScale = 1f;
     }
+    
     public void PauseGame() {
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
@@ -55,6 +56,7 @@ public class UIController : MonoBehaviour {
         isPaused = true;
         Time.timeScale = 0f;
     }
+
     public void ChangeMode() {
         isDeath = isPaused = isWinner = false;
         Time.timeScale = 1f;
@@ -68,6 +70,7 @@ public class UIController : MonoBehaviour {
     public void QuitGame() {
         Application.Quit();
     }
+
     public void Retry() {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;

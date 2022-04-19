@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 1465955286174966065}
   - component: {fileID: 8267678966599110939}
   m_Layer: 6
-  m_Name: Cube
+  m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -515,7 +515,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 200
   clip: {fileID: 8300000, guid: 523b170212e8a2a4a9f37e2b9f662eca, type: 3}
-  enemy: {fileID: 5929629215825364605}
   volume: 1
   deathEffect: {fileID: 1640850412710308263, guid: 1eeb6e6b778e7914996a56d6a24763fb, type: 3}
 --- !u!114 &8267678966599110939

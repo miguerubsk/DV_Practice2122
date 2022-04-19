@@ -6,13 +6,13 @@ public class EnemyHealthManager : MonoBehaviour {
 
     [SerializeField] float health;
     [SerializeField] AudioClip clip;
-    [SerializeField] GameObject enemy;
     [SerializeField] float volume;
     [SerializeField] ParticleSystem deathEffect;
+    GameManager gameManager;
 
     // Start is called before the first frame update
     void Start() {
-        enemy = this.gameObject;
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -22,12 +22,12 @@ public class EnemyHealthManager : MonoBehaviour {
 
     public void TakeDamage(float damage) {
         health -= damage;
-        enemy.transform.localScale = enemy.transform.localScale / 2;
+        transform.localScale = transform.localScale / 2;
         if(health <= 0) {
-            FindObjectOfType<GameManager>().AddPoints(1);
-            ParticleSystem _deathEffect = Instantiate(deathEffect, enemy.transform.position, Quaternion.identity);
-            AudioSource.PlayClipAtPoint(clip, enemy.transform.position, volume);
-            Destroy(enemy, 0.1f);
+            gameManager.AddPoints(1);
+            ParticleSystem _deathEffect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+            AudioSource.PlayClipAtPoint(clip, transform.position, volume);
+            Destroy(this.gameObject, 0.1f);
             Destroy(_deathEffect, 1f);
         }
     }

@@ -24,8 +24,6 @@ public class EnemyGenerator : MonoBehaviour {
                 Instantiate(enemy, new Vector3(xpos, rangeR.transform.position.y, rangeL.transform.position.z), Quaternion.identity);
                 yield return new WaitForSeconds(Random.Range(0, 3));
             }
-            //yield return new WaitForSeconds(espera);
-
         }
     }
 }
